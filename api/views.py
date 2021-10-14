@@ -1,3 +1,3 @@
 from django.shortcuts import render
 
-# Create your views here.
+# falta clase del 14/10
