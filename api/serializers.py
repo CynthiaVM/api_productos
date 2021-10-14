@@ -1,9 +1,11 @@
 from rest_framework import serializers
-from models import Product
+from .models import Product
 
-class ProductSerializers(serializers.ModelSerializers):
+class ProductSerializers(serializers.ModelSerializer):
 
     class Meta:
         model= Product
-        fields= "__all__"
-        
+        fields = "__all__"
+#fields=["name","price"]
+#exluide=["created", "update"] 
+#o uno o el otro.
