@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from functools import update_wrapper
 from django import urls
 from django.contrib import admin
 from django.urls import path
@@ -29,4 +30,7 @@ router.register("products",views.ProductsViewSets)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/", include(router.urls)),
+    #urls de registro y autenticacion
+    path('api/v1/auth/', include ("rest_auth.urls")),
+    path('api/v1/auth/registration', include("rest_auth.registration.urls")),
 ]
