@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
-import rest_framework
+#import rest_framework
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-sf33e6nh#g2_21sv&3unm6e%r@9awc+==j$bhb#e3yyb&ob9n^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,13 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-    "api",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
+    'api',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 #"rest_framework.auth",
-#"rest_auth.resgistration",
 SITE_ID = 1
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -120,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'UTC'
 
@@ -144,7 +146,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-   'rest_framework.authentication.TokenAuthentication',
+   'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+   #'rest_framework.authentication.TokenAuthentication',
    )
 }
 AUTHENTICATION_BACKENDS = (

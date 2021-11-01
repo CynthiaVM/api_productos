@@ -16,20 +16,17 @@ Including another URLconf
 from functools import update_wrapper
 from django import urls
 from django.contrib import admin
-from django.urls import path
-from django.urls.conf import include
-
+from django.urls import path, include
 from api import views
-from api.models import Product
-
 from rest_framework import routers
+
 #creamos el router que va a controlar los endpoints
 router = routers.DefaultRouter()
 #registramos el router
-router.register("products",views.ProductsViewSets)
+router.register('product', views.ProductsViewSets)
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path("api/v1/", include(router.urls)),
+    path('admin/', admin.site.urls),
     #urls de registro y autenticacion
     path('api/v1/auth/', include ("rest_auth.urls")),
     path('api/v1/auth/registration', include("rest_auth.registration.urls")),

@@ -5,7 +5,8 @@ class ProductSerializers(serializers.ModelSerializer):
 
     class Meta:
         model= Product
-        fields = "__all__"
+        exclude = ['created', 'updated'] # para excluir campo
+        #fields = "__all__"
 #fields=["name","price"]
 #exluide=["created", "update"] 
 #o uno o el otro.
